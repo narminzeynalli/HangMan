@@ -1,0 +1,124 @@
+// font style
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// mixin
+@mixin center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// important style for all 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    overflow-x: hidden;
+}
+a {
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 1rem;
+    color: #fff;
+    @include center;
+    text-decoration: none;
+    transition: transform .3s ease;
+    &:hover {
+        transform: scale(.9);
+    }
+}
+
+// hangman game style start
+html {
+    font-size: 10px;
+    body {
+        .container {
+            width: 100%;
+            height: 100vh;
+            background: url('../img/background.jpg') no-repeat bottom/cover;
+            background-color: #000;
+            .main-game-content {
+                position: relative;
+                .letter-buttons {
+                    min-height: 30vh;
+                    @include center;
+                    flex-wrap: wrap;
+                    padding: 0 2rem;
+                    .letter {
+                        width: 5rem;
+                        height: 5rem;
+                        font-size: 1.5rem;
+                        &.d-none {
+                            display: none;
+                        }
+                    }
+                }
+                .spaces {
+                    height: 20vh;
+                    @include center;
+                    .space {
+                        width: 5rem;
+                        height: 5rem;
+                        color: #fff;
+                        font-size: 3rem;
+                        @include center;
+                    }
+                }
+                .warning {
+                    height: 25vh;
+                    color: #fff;
+                    font-size: 3rem;
+                    padding: 5rem 3rem;
+                }
+                .restart-field {
+                    height: 25vh;
+                    @include center;
+                    .restart-button {
+                        width: 15rem;
+                        height: 5rem;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+            .choices {
+                width: 100%;
+                height: 100vh;
+                background: url('../img/background.jpg') no-repeat bottom/cover;
+                background-color: #000;
+                position: absolute;
+                top: 0;
+                @include center;
+                .topics {
+                    display: grid;
+                    grid-template-columns: 15rem 15rem 15rem;
+                    grid-template-rows: 15rem 15rem;
+                    gap: 3rem;
+                    .topic {
+                        font-size: 2rem;
+                    }
+                }
+                &.d-none {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+// hangman game style end
+
+@media screen and (max-width: 576px) {
+    html {
+        body {
+            .container {
+                .choices {
+                    .topics {
+                        grid-template-columns: 15rem 15rem;
+                        grid-template-rows: 15rem 15rem 15rem;
+                    }
+                }
+            }
+        }
+    }
+}
